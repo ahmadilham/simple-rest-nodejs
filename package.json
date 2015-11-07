@@ -1,0 +1,16 @@
+{
+  "name": "simple-rest-nodejs",
+  "version": "1.0.0",
+  "description": "simple rest node js for todo application",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ahmad ilham",
+  "license": "ISC"
+}
