@@ -1,12 +1,12 @@
 module.exports = function(app) {
-    var TodoService = require('./../app/services/todoService');
-    var todoService = new TodoService();    
+    var TodoService = require('./../app/services/todoService')
+      , todoService = new TodoService();    
      /**
      * HTTP GET /api/todos
      * Returns: the list of todos in JSON format
      */
     app.get('/api/todos', function (request, response) {
-        response.json({todos: todoService.getAll()});
+        response.json(todoService.getAll());
     });
     /**
      * HTTP GET /api/todos/:id
@@ -18,7 +18,7 @@ module.exports = function(app) {
         try {
             response.json(todoService.get(request.params.id));
         } catch (e) {
-            response.sendStatus(404);
+            response.sendStatus(400);
         }
     });
     /**
@@ -31,7 +31,7 @@ module.exports = function(app) {
             todoService.create(request.body);
             response.sendStatus(201);
         } catch (e) {            
-            response.sendStatus(404);
+            response.sendStatus(400);
         }        
     });
     /**
@@ -48,7 +48,7 @@ module.exports = function(app) {
             todoService.update(todo);
             response.sendStatus(200);
         } catch (e) {                        
-            response.sendStatus(404);
+            response.sendStatus(400);
         }
     });
     /**
@@ -62,7 +62,7 @@ module.exports = function(app) {
             todoService.delete(request.params.id);
             response.sendStatus(200);
         } catch (e) {
-            response.sendStatus(404);
+            response.sendStatus(400);
         }
     });
 

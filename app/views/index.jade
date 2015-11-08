@@ -1,0 +1,36 @@
+block content
+    h1= title
+    p Simple Rest API for Node Js
+
+    // Wrapper
+    #wrapper
+
+        // Functionalitas API List
+        h2 Functionalitas API List
+        ul#apiList  
+            li Get All Todos (first run is empty)
+                p #[a(href="/api/todos") GET /api/todos]
+            li Get Todo by Todo Id
+                p GET /api/todos/:id
+            li Create Todo
+                p POST /api/todos                
+                textarea(rows="5", cols="35", readonly)
+                  | {
+                  |     name : string,
+                  |     description : string,
+                  |     done : boolean (default:false) 
+                  | }
+            li Update Todo
+                p PUT /api/todos/:id
+                textarea(rows="5", cols="35", readonly)
+                  | {
+                  |     name : string,
+                  |     description : string,
+                  |     done : boolean 
+                  | }
+            li Delete Todo
+                p DELETE /api/todos/:id                
+                  
+        // /apiList
+
+    // /WRAPPER

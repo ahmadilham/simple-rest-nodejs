@@ -1,10 +1,26 @@
 /*jslint undef: true */
 // Create Todo Model
-function Todo(id, name, description, done) {
+function Todo(id, title, description, done) {
     "use strict";
     this.id = id;
-    this.name = name;
+    this.title = title;
     this.description = description;    
+    this.done = done;
+}
+
+Todo.prototype.setId = function(id) {
+    this.id = id;
+}
+
+Todo.prototype.setTitle = function(title) {
+    this.title = title;
+}
+
+Todo.prototype.setDescription = function(description){
+    this.description = description;
+}
+
+Todo.prototype.setDone = function(done){
     this.done = done;
 }
 

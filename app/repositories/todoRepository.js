@@ -32,7 +32,7 @@ TodoRepository.prototype.save = function (todo) {
         var index = this.findIndex(todo.id);
         this.todos[index] = todo;
     }
-
+    return todo;
 }
 /**
  * Remove a todo

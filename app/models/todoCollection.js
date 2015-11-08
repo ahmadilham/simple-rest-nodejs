@@ -5,6 +5,10 @@ function TodoCollection(todos) {
     this.todos = todos;    
 }
 
+TodoCollection.prototype.setTodos = function(todos) {
+    this.todos = todos;
+}
+
 TodoCollection.prototype.getTodosCompleted = function (){
     return this.todos.filter(function(todo){
          return todo.done == true; 

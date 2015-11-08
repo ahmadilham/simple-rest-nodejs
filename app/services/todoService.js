@@ -1,6 +1,6 @@
-var TodoRepository = require('./../repositories/todoRepository');
-var Todo = require('./../models/todo');
-var TodoCollection = require('./../models/todoCollection');
+var TodoRepository = require('./../repositories/todoRepository')
+    , Todo = require('./../models/todo')
+    , TodoCollection = require('./../models/todoCollection');
 
 /**
 * Todo Service
@@ -41,11 +41,11 @@ TodoService.prototype.getAll = function(){
 * param : todo
 */
 TodoService.prototype.create = function(todo){
-    //name is mandatory
-    if (todo.name == null){        
+    //title is mandatory
+    if (todo.title == null || todo.title == ''){        
         throw new Error('todo name is mandatory field');
     }
-    return this.todoRepository.save(new Todo(null,todo.name,todo.description || '',todo.done || false));
+    return this.todoRepository.save(new Todo(null,todo.title,todo.description || '',todo.done || false));
 }
 
 /**
@@ -54,14 +54,21 @@ TodoService.prototype.create = function(todo){
 */
 TodoService.prototype.update = function(todo){    
     var persistedTodo = this.get(todo.id);
-    return this.todoRepository.save(new Todo(persistedTodo.id, todo.name || persistedTodo.name,todo.description || persistedTodo.description,todo.done || persistedTodo.done));
+    if (persistedTodo == null){
+        throw new Error('invalid todo id');
+    }    
+    return this.todoRepository.save(new Todo(persistedTodo.id, todo.title || persistedTodo.title,todo.description || persistedTodo.description,todo.done || persistedTodo.done));
 }
 
 /**
 * Delete Todo
 * param : todo
 */
-TodoService.prototype.delete = function(id){    
+TodoService.prototype.delete = function(id){  
+    var persistedTodo = this.get(id);
+    if (persistedTodo == null){
+        throw new Error('invalid todo id');
+    }    
     return this.todoRepository.remove(id);
 }
 
