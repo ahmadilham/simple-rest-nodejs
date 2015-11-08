@@ -3,7 +3,7 @@ var assert = require('assert')
  , request = require('supertest')
  , port = process.env.PORT || 8085;
 
-var url = 'http://localhost/'+ port;
+var url = 'http://localhost:'+ port;
 
 // Test Home page
 
