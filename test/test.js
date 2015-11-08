@@ -61,8 +61,8 @@ describe('Todo', function() {
         .expect(200)
         .end(function(err, res){
             if (err) return done(err);
-            res.body.todos.todos.length.should.equal(2);
-            res.body.todos.todos[0].title.should.equal(todo1.title);
+            res.body.todos.length.should.equal(2);
+            res.body.todos[0].title.should.equal(todo1.title);
             done();
         });
     });
