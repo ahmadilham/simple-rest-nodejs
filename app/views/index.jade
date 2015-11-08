@@ -14,19 +14,19 @@ block content
                 p GET /api/todos/:id
             li Create Todo
                 p POST /api/todos                
-                textarea(rows="5", cols="35", readonly)
+                textarea(rows="5", cols="38", readonly)
                   | {
-                  |     name : string (mandatory),
-                  |     description : string,
-                  |     done : boolean (default:false) 
+                  |     "title" : string (mandatory),
+                  |     "description" : string,
+                  |     "done" : boolean (default:false) 
                   | }
             li Update Todo
                 p PUT /api/todos/:id
-                textarea(rows="5", cols="35", readonly)
+                textarea(rows="5", cols="38", readonly)
                   | {
-                  |     name : string,
-                  |     description : string,
-                  |     done : boolean 
+                  |     "title" : string,
+                  |     "description" : string,
+                  |     "done" : boolean 
                   | }
             li Delete Todo
                 p DELETE /api/todos/:id                
