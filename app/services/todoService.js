@@ -69,7 +69,7 @@ TodoService.prototype.update = function(todo){
 
 /**
 * Delete Todo
-* param : todo
+* param : todo id
 */
 TodoService.prototype.delete = function(id){  
     var persistedTodo = this.get(id);

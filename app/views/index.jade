@@ -5,8 +5,8 @@ block content
     // Wrapper
     #wrapper
 
-        // Functionalitas API List
-        h2 Functionalitas API List
+        // Functional API List
+        h2 Functional API List
         ul#apiList  
             li Get All Todos (first run is empty)
                 p #[a(href="/api/todos") GET /api/todos]
@@ -16,7 +16,7 @@ block content
                 p POST /api/todos                
                 textarea(rows="5", cols="35", readonly)
                   | {
-                  |     name : string,
+                  |     name : string (mandatory),
                   |     description : string,
                   |     done : boolean (default:false) 
                   | }

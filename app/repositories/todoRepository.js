@@ -21,7 +21,7 @@ TodoRepository.prototype.findIndex = function (id) {
 }
 /**
  * Save a todo (create or update)
- * Param: todo the todo to save
+ * Param: todo
  */
 TodoRepository.prototype.save = function (todo) {
     if (todo.id == null || todo.id == 0) {
@@ -36,7 +36,7 @@ TodoRepository.prototype.save = function (todo) {
 }
 /**
  * Remove a todo
- * Param: id the of the todo to remove
+ * Param: todo id
  */
 TodoRepository.prototype.remove = function (id) {
     var index = this.findIndex(id);
