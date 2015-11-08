@@ -1,8 +1,9 @@
 var assert = require('assert')
  , should = require('should')
  , request = require('supertest')
- , url = 'http://localhost:8085'
- , server = request.agent(url);
+ , port = process.env.PORT || 8085;
+
+var url = 'http://localhost/'+ port;
 
 // Test Home page
 
