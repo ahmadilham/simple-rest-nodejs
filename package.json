@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "simple rest node js for todo application",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  }
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3",

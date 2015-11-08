@@ -4,6 +4,7 @@
 var express = require('express')
  , bodyParser = require('body-parser');
 var app = express();
+var port = process.env.PORT || 8085;
 
 app.set('views', './app/views');
 app.set('view engine', 'jade');
@@ -27,4 +28,6 @@ app.get('/api', function (req, res) {
   )
 });
 
-app.listen(8085); //to port on which the express server listen
+app.listen(port, function() {
+    console.log('App is running on http://localhost:' + port);
+});
