@@ -116,6 +116,20 @@ describe('Todo', function () {
                 done();
             });
     });
+    it('should return error when creating todo with invalid done', function (done) {
+        var todo = {
+            description: 'jogging near lake',
+            done: 'this will be an error'
+        };
+        request(url)
+            .post('/api/todos')
+            .send(todo)
+            .expect(400, 'invalid todo') //bad request
+            .end(function (err, res) {
+                if (err) { return done(err); }
+                done();
+            });
+    });
     it('should correctly update an existing todo', function (done) {
         var todo = {
             title: 'football after work',
@@ -131,7 +145,7 @@ describe('Todo', function () {
                 done();
             });
     });
-    it('should return error when updating with invalid id', function (done) {
+    it('should return error when updating with invalid todo id', function (done) {
         var todo = {
             title: 'football after work',
             description: 'play football with friends',
@@ -141,6 +155,19 @@ describe('Todo', function () {
             .put('/api/todos/101')
             .send(todo)
             .expect(400, 'todo not found')
+            .end(function (err, res) {
+                if (err) { return done(err); }
+                done();
+            });
+    });
+    it('should return error when updating with invalid done', function (done) {
+        var todo = {
+            done: 'this will be an error'
+        };
+        request(url)
+            .put('/api/todos/1')
+            .send(todo)
+            .expect(400, 'invalid todo')
             .end(function (err, res) {
                 if (err) { return done(err); }
                 done();

@@ -33,8 +33,8 @@ TodoService.prototype.get = function (id) {
 TodoService.prototype.getAll = function () {
     'use strict';
     var todoCollection = new TodoCollection(this.todoRepository.todos);
-    todoCollection.completed = todoCollection.getTodosCompleted();
-    todoCollection.remaining = todoCollection.getTodosRemaining();
+    todoCollection.setRemaining();
+    todoCollection.setCompleted();
     return todoCollection;
 };
 
@@ -59,7 +59,7 @@ TodoService.prototype.create = function (todo) {
 TodoService.prototype.update = function (todo) {
     'use strict';
     var persistedTodo = this.get(todo.id),
-        todoObj = new Todo(persistedTodo.id, todo.title || persistedTodo.title, todo.description || persistedTodo.description, todo.done || persistedTodo.done);
+        todoObj = new Todo(persistedTodo.id, todo.title || persistedTodo.title, todo.description || persistedTodo.description, (todo.done === null || todo.done === undefined ? persistedTodo.done : todo.done));
     if (todoObj.isValid()) {
         return this.todoRepository.save(todoObj);
     } else {
