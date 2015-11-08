@@ -40,12 +40,13 @@ TodoService.prototype.getAll = function(){
 * Create todo
 * param : todo
 */
-TodoService.prototype.create = function(todo){
-    //title is mandatory
-    if (todo.title == null || todo.title == ''){        
-        throw new Error('todo name is mandatory field');
+TodoService.prototype.create = function(todo){    
+    var todoObj = new Todo(null,todo.title,todo.description || '',todo.done || false);    
+    if (todoObj.isValid()){
+        return this.todoRepository.save(todoObj);
+    }else{
+        throw new Error('invalid todo');
     }
-    return this.todoRepository.save(new Todo(null,todo.title,todo.description || '',todo.done || false));
 }
 
 /**
@@ -57,7 +58,13 @@ TodoService.prototype.update = function(todo){
     if (persistedTodo == null){
         throw new Error('invalid todo id');
     }    
-    return this.todoRepository.save(new Todo(persistedTodo.id, todo.title || persistedTodo.title,todo.description || persistedTodo.description,todo.done || persistedTodo.done));
+    var todoObj = new Todo(persistedTodo.id, todo.title || persistedTodo.title,todo.description || persistedTodo.description,todo.done || persistedTodo.done);
+    
+    if (todoObj.isValid()){
+        return this.todoRepository.save(todoObj);
+    }else{
+        throw new Error('invalid todo');
+    }
 }
 
 /**

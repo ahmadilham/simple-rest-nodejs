@@ -24,4 +24,14 @@ Todo.prototype.setDone = function(done){
     this.done = done;
 }
 
+Todo.prototype.isValid = function(){
+    //title is mandatory
+    if (this.title == null || this.title == ''){
+        return false;
+    }else if (this.done != true && this.done != false){
+        return false;
+    }
+    return true;
+}
+
 module.exports = Todo;
