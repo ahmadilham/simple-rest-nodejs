@@ -15,7 +15,7 @@ TodoRepository.prototype.findIndex = function (id) {
     'use strict';
     var index = null;
     this.todos.forEach(function (item, key) {
-        if (item.id === id) {
+        if (item.id == id) {
             index = key;
         }
     });
