@@ -32,10 +32,7 @@ TodoService.prototype.get = function (id) {
 */
 TodoService.prototype.getAll = function () {
     'use strict';
-    var todoCollection = new TodoCollection(this.todoRepository.todos);
-    todoCollection.setRemaining();
-    todoCollection.setCompleted();
-    return todoCollection;
+    return new TodoCollection(this.todoRepository.todos);
 };
 
 /**
