@@ -51,6 +51,22 @@ describe('Todo', function () {
                 done();
             });
     });
+    //delete the data after done testing
+    after(function (done) {        
+        request(url)
+            .delete('/api/todos/2')
+            .expect(200)
+            .end(function (err, res) {
+                if (err) { return done(err); }
+            });
+        request(url)
+            .delete('/api/todos/3')
+            .expect(200) 
+            .end(function (err, res) {
+                if (err) { return done(err); }
+                done();
+            });
+    });
     it('should correctly get all todos', function (done) {
         var todo1 = {
             title: 'football',
