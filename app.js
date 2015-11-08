@@ -1,8 +1,5 @@
-/**
- *jslint undef: true
- */
-var express = require('express')
- , bodyParser = require('body-parser');
+/*jslint undef: true */
+var express = require('express'), bodyParser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 8085;
 
@@ -17,17 +14,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 require('./config/routes.js')(app);
 
 app.get('/', function (req, res) {
-  res.render('index',
-  { title : 'Home' }
-  )
+    'use strict';
+    res.render('index', { title : 'Home' });
 });
 
 app.get('/api', function (req, res) {
-  res.render('index',
-  { title : 'Home' }
-  )
+    'use strict';
+    res.render('index', { title : 'Home' });
 });
 
-app.listen(port, function() {
+app.listen(port, function () {
+    'use strict';
+    /*jslint undef: true */
     console.log('App is running on http://localhost:' + port);
 });

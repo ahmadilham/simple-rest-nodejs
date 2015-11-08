@@ -1,6 +1,8 @@
-module.exports = function(app) {
-    var TodoService = require('./../app/services/todoService')
-      , todoService = new TodoService();    
+/*jslint undef: true */
+var TodoService = require('./../app/services/todoService'), todoService = new TodoService();
+
+module.exports = function (app) {
+    'use strict';
      /**
      * HTTP GET /api/todos
      * Returns: the list of todos in JSON format
@@ -14,11 +16,11 @@ module.exports = function(app) {
      * Returns: the todo with the specified :id in a JSON format
      * Error: 404 HTTP code if the todo doesn't exists
      */
-    app.get('/api/todos/:id', function (request, response) {        
+    app.get('/api/todos/:id', function (request, response) {
         try {
             response.json(todoService.get(request.params.id));
         } catch (e) {
-            response.sendStatus(400);
+            response.status(400).send(e.message);
         }
     });
     /**
@@ -26,13 +28,13 @@ module.exports = function(app) {
      * Body Param: the JSON todo you want to create
      * Returns: 200 HTTP code
      */
-    app.post('/api/todos', function (request, response) {                
-        try {           
+    app.post('/api/todos', function (request, response) {
+        try {
             todoService.create(request.body);
             response.sendStatus(201);
-        } catch (e) {            
-            response.sendStatus(400);
-        }        
+        } catch (e) {
+            response.status(400).send(e.message);
+        }
     });
     /**
      * HTTP PUT /api/todos/
@@ -42,13 +44,13 @@ module.exports = function(app) {
      * Error: 404 HTTP code if the todo doesn't exists
      */
     app.put('/api/todos/:id', function (request, response) {
-        var todo = request.body;        
+        var todo = request.body;
         todo.id = request.params.id;
-        try {           
+        try {
             todoService.update(todo);
             response.sendStatus(200);
-        } catch (e) {                        
-            response.sendStatus(400);
+        } catch (e) {
+            response.status(400).send(e.message);
         }
     });
     /**
@@ -59,10 +61,10 @@ module.exports = function(app) {
      */
     app.delete('/api/todos/:id', function (request, response) {
         try {
-            todoService.delete(request.params.id);
+            todoService.remove(request.params.id);
             response.sendStatus(200);
         } catch (e) {
-            response.sendStatus(400);
+            response.status(400).send(e.message);
         }
     });
 
